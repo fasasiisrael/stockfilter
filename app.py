@@ -83,7 +83,7 @@ filtered_df = df.query(" and ".join(conditions))
 return filtered_df
 @app.route('/', methods=['GET', 'POST'])
 def index():
-if request.method == 'POST':
+    if request.method == 'POST':
 # Get the CSV file and filter input from the form
 csv_file = request.files['csv_file']
 filter_input = request.form['filter_input']
