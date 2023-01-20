@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Filtered Stocks</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="csv_file">
+      <input type="text" name="filter_input" placeholder="Enter filter input">
+      <input type="submit" value="Filter">
+    </form>
+    {% if filtered_df %}
+      <table>
+        <tr>
+          <th>SYMBOL</th>
+          <th>DATE</th>
+          <th>PCLOSE</th>
+          <th>OPEN</th>
+          <th>HIGH</th>
+          <th>LOW</th>
+          <th>CLOSE</th>
+          <th>VOLUME</th>
+        </tr>
+        <!-- Iterate over the rows in the filtered DataFrame and create a table row for each -->
+        {% for index, row in filtered_df.iterrows() %}
+          <tr>
+            <td>{{ row['SYMBOL'] }}</td>
+            <td>{{ row['DATE'] }}</td>
+            <td>{{ row['PCLOSE'] }}</td>
+            <td>{{ row['OPEN']
+                <td>{{ row['HIGH'] }}</td>
+                <td>{{ row['LOW'] }}</td>
+                <td>{{ row['CLOSE'] }}</td>
+                <td>{{ row['VOLUME'] }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        {% endif %}
+    </body>
+    </html>        
